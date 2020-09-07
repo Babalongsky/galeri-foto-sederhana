@@ -1,0 +1,187 @@
+/* font */
+@font-face {
+    font-family: 'alexbrush';
+    src: url(../font/alexbrush-regular-webfont.woff) format('woff');
+}
+
+/* style utama */
+body {
+    font: 20px/36px 'alexbrush', arial, sans-serif;
+    background-color: lightgrey;
+}
+
+h1 {
+    font-size: 50px;
+    margin: 60px 0px;
+    text-align: center;
+    text-shadow: 2px 2px 2px white;
+}
+
+.container {
+    width: 600px;
+    background-color: olive;
+    margin: auto;
+    padding: 30px;
+    box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.9);
+    border-radius: 5px;
+
+}
+
+.gallery li {
+    width: 120px;
+    height: 120px;
+    overflow: hidden;
+    border: 3px solid lightgrey;
+    float: left;
+    margin: 10px 12px;
+    position: relative;
+}
+
+.gallery li,
+.gallery li span {
+    border-radius: 50%;
+
+}
+
+
+.gallery li span {
+    display: block;
+    width: 120px;
+    height: 120px;
+    background-color: rgba(200, 200, 200, 0.5);
+    position: absolute;
+    top: 0;
+    text-align: center;
+    line-height: 120px;
+    color: black;
+    font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+    font-size: 30px solid;
+    text-shadow: 1px 1px 1px #ddd;
+    opacity: 0;
+    transform: scale(0) rotate(0);
+    transition: 0.3s;
+
+}
+
+.gallery li a:hover span {
+    opacity: 1;
+    transform: scale(1) rotate(360deg);
+}
+
+.clear {
+    clear: both;
+}
+
+/* overlay */
+.overlay {
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0);
+    z-index: 1000;
+    transition: 0.8s;
+    text-align: center;
+    padding: 100px;
+    z-index: 9999;
+}
+
+.overlay:target {
+    width: auto;
+    height: auto;
+    bottom: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+
+.overlay img {
+    max-height: 100%;
+    box-shadow: 3px 3px 10px rgba(0, 0, 0, 0.7);
+    margin-top: 50px;
+}
+
+.overlay:target img {
+    animation: zoomDanFade 1s;
+}
+
+.overlay .close {
+    position: absolute;
+    top: 800px;
+    left: 46%;
+    color: black;
+    font-size: 50px;
+    text-decoration: none;
+    line-height: 25px;
+    padding: 2px;
+    opacity: 0;
+}
+
+.overlay:target .close {
+    animation: slideDownFade 1s 0.5s forwards;
+}
+
+.overlay:target .next,
+.overlay:target .prev {
+    animation: fadeAja 1s forwards;
+}
+
+/* navigasi */
+
+.next,
+.prev {
+    width: 100px;
+    height: 100px;
+    top: 23%;
+    background-image: url(../img/kanan1.png);
+    position: absolute;
+    text-indent: -9000px;
+    z-index: 1;
+    opacity: 0;
+}
+
+.prev {
+    background-image: url(../img/kiri1.png);
+    margin-left: -100px;
+    opacity: 0;
+}
+
+
+/* animasi */
+
+@keyframes fadeAja {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+
+}
+
+@keyframes zoomDanFade {
+    0% {
+        transform: scale(0);
+        opacity: 0;
+    }
+
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+}
+
+
+@keyframes slideDownFade {
+    0% {
+        opacity: 0;
+        top: 0px;
+    }
+
+    100% {
+        opacity: 1;
+        top: 800px;
+    }
+}
